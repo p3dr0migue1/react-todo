@@ -22,7 +22,7 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
-package-lock.json
+# package-lock.json
 public/bundle.js
 
 packages/react-devtools-core/dist
