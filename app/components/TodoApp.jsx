@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'node-uuid';
 
 // local imports
 import AddTodo from 'AddTodo';
@@ -13,19 +14,19 @@ class TodoApp extends React.Component {
       searchText: '',
       todos: [
         {
-          'id': 1,
+          'id': uuid(),
           'text': 'Walk the dog',
         },
         {
-          'id': 2,
+          'id': uuid(),
           'text': 'Clean the yard',
         },
         {
-          'id': 3,
+          'id': uuid(),
           'text': 'Do react course',
         },
         {
-          'id': 4,
+          'id': uuid(),
           'text': 'Do laundry',
         }
       ]
@@ -35,7 +36,15 @@ class TodoApp extends React.Component {
   }
 
   handleAddTodo(text) {
-    alert(`new todo: ${text}`);
+    this.setState({
+      todos: [
+        ...this.state.todos,  // we want to include all old todos
+        {
+          id: uuid(),
+          text: text,
+        },
+      ],
+    });
   };
 
   handleSearch(searchText, showCompleted) {
