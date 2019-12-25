@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-import { assert, expect } from 'chai';
-import sinon from 'sinon';
 import $ from 'jquery';
+import sinon from 'sinon';
+import { assert, expect } from 'chai';
 
 // local imports
 import AddTodo from 'AddTodo';
