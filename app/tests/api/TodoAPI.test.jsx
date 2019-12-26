@@ -56,4 +56,36 @@ describe('TodoAPI', () => {
       expect(actualTodos).to.deep.equal(todos);
     });
   });
+
+  describe('filterTodos', () => {
+    const todos = [
+      {
+        'id': 1,
+        'text': 'Go for a run',
+        'completed': true,
+      },
+      {
+        'id': 2,
+        'text': 'Do company accounting',
+        'completed': false,
+      },
+      {
+        'id': 3,
+        'text': 'Take car for MOT',
+        'completed': true,
+      },
+    ];
+
+    it('should return all items if showCompleted is true', () => {
+      const filteredTodos = TodoAPI.filterTodos(todos, true, '');
+
+      expect(filteredTodos.length).to.equal(3);
+    });
+
+    it('should return non-completed tasks when showCompleted is false', () => {
+      const filteredTodos = TodoAPI.filterTodos(todos, false, '');
+
+      expect(filteredTodos.length).to.equal(1);
+    });
+  });
 });
