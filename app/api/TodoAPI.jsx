@@ -19,4 +19,16 @@ export default {
 
     return $.isArray(todos) ? todos : []; 
   },
+  filterTodos: function (todos, showCompleted, searchText) {
+    // filter by completed tasks
+    let filteredTodos = todos;
+    filteredTodos = filteredTodos.filter((todo) => {
+      return !todo.completed || showCompleted;
+    });
+
+    // filter by text
+
+    // sort todos with non-completed tasks first
+    return filteredTodos;
+  },
 };
