@@ -17,6 +17,7 @@ describe('TodoApp', () => {
     todoApp.handleAddTodo(todoText);
 
     expect(todoApp.state.todos[0].text).to.equal(todoText);
+    expect(todoApp.state.todos[0].createdAt).to.be.a('number');
   });
 
   it('should toggle completed value when handleToggle called', () => {
@@ -24,6 +25,8 @@ describe('TodoApp', () => {
       'id': 11,
       'text': 'Test features',
       'completed': false,
+      'createdAt': 0,
+      'completedAt': undefined,
     };
     const todoApp = ReactTestUtils.renderIntoDocument(<TodoApp />);
     todoApp.setState({ 'todos': [todoData] });
@@ -32,5 +35,23 @@ describe('TodoApp', () => {
 
     todoApp.handleToggle(todoData.id);
     expect(todoApp.state.todos[0].completed).to.be.true;
+    expect(todoApp.state.todos[0].completedAt).to.be.a('number');
+  });
+
+  it('should remove completedAt time when toggle a completed task', () => {
+    const todoData = {
+      'id': 11,
+      'text': 'Test features',
+      'completed': true,
+      'createdAt': 0,
+      'completedAt': 123,
+    };
+    const todoApp = ReactTestUtils.renderIntoDocument(<TodoApp />);
+    todoApp.setState({ 'todos': [todoData] });
+    expect(todoApp.state.todos[0].completed).to.be.true;
+
+    todoApp.handleToggle(todoData.id);
+    expect(todoApp.state.todos[0].completed).to.be.false;
+    expect(todoApp.state.todos[0].completedAt).to.be.a('undefined');
   });
 });
