@@ -87,5 +87,23 @@ describe('TodoAPI', () => {
 
       expect(filteredTodos.length).to.equal(1);
     });
+
+    it('should sort by completed status', () => {
+      const filteredTodos = TodoAPI.filterTodos(todos, true, '');
+
+      expect(filteredTodos[0].completed).to.be.false;
+    });
+
+    it('should return all tasks if searchText is empty', () => {
+      const filteredTodos = TodoAPI.filterTodos(todos, true, '')
+
+      expect(filteredTodos.length).to.equal(3);
+    });
+
+    it('should return the tasks filtered by searchText', () => {
+      const filteredTodos = TodoAPI.filterTodos(todos, true, 'mot');
+
+      expect(filteredTodos.length).to.equal(1);
+    });
   });
 });
