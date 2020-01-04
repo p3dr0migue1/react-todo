@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start",
-    "test:debug": "node node_modules/karma/bin/karma start --browsers=Chrome --single-run=false --auto-watch",
+    "test-debug": "node node_modules/karma/bin/karma start --browsers=Chrome --single-run=false --auto-watch",
     "start": "node server.js"
   },
   "dependencies": {

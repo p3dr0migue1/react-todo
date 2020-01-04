@@ -6,8 +6,9 @@ import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 import TodoApp from 'TodoApp';
 
 // load foundation
+require('style-loader!css-loader!foundation-sites/dist/css/foundation-float.min.css');
 require('style-loader!css-loader!foundation-sites/dist/css/foundation.min.css');
-// $(document).foundation();
+$(document).foundation();
 
 // App CSS
 require('style-loader!css-loader!sass-loader!applicationStyles')
